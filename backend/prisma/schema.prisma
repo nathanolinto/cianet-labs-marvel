@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Character {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  thumbnail   String
+
+  comics Comic[]
+  @@map("characters")
+}
+
+model Comic {
+  id                  String @id @default(uuid())
+  title               String
+  variant_description String
+  description         String
+  page_count          Int
+  thumbnail           String
+
+  character Character @relation(fields: [character_id], references: [id])
+
+  character_id String
+  @@map("comics")
+}
