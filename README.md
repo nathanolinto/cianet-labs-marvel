@@ -64,10 +64,13 @@ páginas e a capa).
 
 1. O backend deve ser uma API REST.
 2. Deve buscar os dados da API da Marvel e salvá-los em um banco de dados próprio, modelado por você.
-3. O front-end deve ser separado do backend. 
+3. O front-end deve ser separado do backend.
+
+## Pegando dados da API da Marvel
+Foi criado um endpoint "/getdatafrommarvelapi", ele é reponsavel por pegar os dados da Marvel e salvar no banco de dados local.
+Como não foi implementado um sistema de autenticação onde somente o adminstrador poderia pegar os dados da Api da Marvel e adicionar no banco, foi deixado como padão pegar somente os 10 primeiros registro. Mas foi deixado um "do while" comentado no "backend/src/services/GetDataFromMarvelApiService.ts", descomentando e fazendo a chamanda a rota ele pega todos os registros e adiciona no banco de dados local, como são muitos dados possa ser que demore um pouco.
+
+## Escolha do banco de dados
+Na intenção de diminuir a complexidade da instalação da aplicação, visto que será executada localmente afim de testar o conhecimentos técnicos do candidato. Foi escolhido o SQLite por ser um banco de dados virtual e quase não precisa de configuração para executa-lo, pois ele é um arquivo local. Inclusive o DB foi enviado junto com o projeto. As migrations do banco de dados estão "backend/prisma/migrations". Caso esse projeto seja usado em produção, é recomendado utilizar outro banco de dados como o PostgreSQL ou o MongoDB. 
 
 ---
-
-git remote add origin https://github.com/nathanolinto/parapeharoscomandos.git
-git branch -M main
-git push -u origin main

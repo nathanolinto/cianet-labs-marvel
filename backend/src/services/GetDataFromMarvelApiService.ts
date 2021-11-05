@@ -3,8 +3,8 @@ import axios from "axios";
 
 class GetDataFromMarvelApiService {
     async execute() {
-        const marvelPublicKey = "b091e4f619436453d9a951e666a18be8";
-        const marvelPrivateKey = "41c8c6053be4b279e2d3c256fb3f782e1f9cc28b";
+        const marvelPublicKey = process.env.MARVEL_PUBLIC_KEY;
+        const marvelPrivateKey = process.env.MARVEL_PRIVATE_KEY;
         const ts = Number(new Date());
 
         const hash = md5(ts + marvelPrivateKey + marvelPublicKey);
